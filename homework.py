@@ -114,8 +114,8 @@ class Swimming(Training):
         calories_1 = self.get_mean_speed() + self.CF_CALORIES_5
         return calories_1 * self.CF_CALORIES_6 * self.weight
 
-
-def read_package(fitness_type: str, data: list[int]) -> Training:
+from typing import Any
+def read_package(fitness_type: str, data: list[Any]) -> Training:
     """Прочитать данные полученные от датчиков."""
     type_dict = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
     return type_dict[fitness_type](*data)
