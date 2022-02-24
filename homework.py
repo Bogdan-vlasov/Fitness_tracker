@@ -1,3 +1,6 @@
+from typing import List, TypeVar
+T = TypeVar('T', str, float)
+
 class InfoMessage:
     """Информационное сообщение о тренировке."""
 
@@ -114,9 +117,6 @@ class Swimming(Training):
         calories_1 = self.get_mean_speed() + self.CF_CALORIES_5
         return calories_1 * self.CF_CALORIES_6 * self.weight
 
-from typing import List, TypeVar
-
-T = TypeVar('T', str, float)
 
 def read_package(workout_type: str, data: List[T]) -> Training:
     """Прочитать данные полученные от датчиков."""
