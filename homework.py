@@ -64,7 +64,6 @@ class Running(Training):
     """Тренировка: бег."""
     CF_CALORIES_1 = 18
     CF_CALORIES_2 = 20
-    TRAINING_TYPE = 'RUN'
 
     def get_spent_calories(self) -> float:
         cal = self.CF_CALORIES_1 * self.get_mean_speed() - self.CF_CALORIES_2
@@ -78,7 +77,6 @@ class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
     CF_CALORIES_3 = 0.035
     CF_CALORIES_4 = 0.029
-    TRAINING_TYPE = 'WLK'
 
     def __init__(self,
                  action: int,
@@ -100,7 +98,6 @@ class Swimming(Training):
     CF_CALORIES_5 = 1.1
     CF_CALORIES_6 = 2
     LEN_STEP = 1.38
-    TRAINING_TYPE = 'SWM'
 
     def __init__(self,
                  action: int,
@@ -115,16 +112,14 @@ class Swimming(Training):
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
         speed_1 = self.length_pool * self.count_pool
-        self.speed = speed_1 / self.M_IN_KM / self.duration
-        return self.speed
-
+        return speed_1 / self.M_IN_KM / self.duration
     def get_spent_calories(self) -> float:
         calories_1 = self.get_mean_speed() + self.CF_CALORIES_5
         calories = calories_1 * self.CF_CALORIES_6 * self.weight
         return calories
 
 
-def read_package(fitness_type: str, data: list) -> Training:
+def read_package(fitness_type: str, data: list[int]) -> Training:
     """Прочитать данные полученные от датчиков."""
     type_dict = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
     return type_dict[fitness_type](*data)
