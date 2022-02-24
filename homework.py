@@ -1,6 +1,7 @@
 from typing import List, TypeVar
 T = TypeVar('T', str, float)
 
+
 class InfoMessage:
     """Информационное сообщение о тренировке."""
 
