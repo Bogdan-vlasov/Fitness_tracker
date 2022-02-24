@@ -121,7 +121,7 @@ T = TypeVar('T', str, float)
 def read_package(workout_type: str, data: List[T]) -> Training:
     """Прочитать данные полученные от датчиков."""
     type_dict = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
-    return type_dict[fitness_type](*data)
+    return type_dict[workout_type](*data)
 
 
 def main(result_training: Training) -> None:
